@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ArvoresBinaria")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d38db0f5e8c3c32b0859765ec8792e31cca210d8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba2305ec95f9d72676e64c97f6ed84836e1752ea")]
 [assembly: System.Reflection.AssemblyProductAttribute("ArvoresBinaria")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ArvoresBinaria")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
