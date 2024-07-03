@@ -22,30 +22,42 @@ public class BinaryTree
                 queue.Enqueue(auxNode.right);
         }
     }
-    public void InOrder(Node? node = null)
+    public void InOrderTraversal(Node? node = null)
     {
         if (node == null)
             node = root;
         if (node.left != null)
-            InOrder(node.left);
+            InOrderTraversal(node.left);
         Console.WriteLine(node.value);
 
         if (node.right != null)
         {
-            InOrder(node.right);
+            InOrderTraversal(node.right);
         }
     }
+    public void preOrderTraversal(Node? node = null)
+    {
+        if (node == null)
+            node = root;
+        Console.WriteLine(node.value);
+        if (node.left != null)
+            preOrderTraversal(node.left);
+        if (node.right != null)
+            preOrderTraversal(node.right);
 
-    public void postOrder(Node? node = null)
+
+    }
+
+    public void postOrderTraversal(Node? node = null)
     {
         if (node == null)
         {
             node = root;
         }
         if (node.left != null)
-            postOrder(node.left);
+            postOrderTraversal(node.left);
         if (node.right != null)
-            postOrder(node.right);
+            postOrderTraversal(node.right);
         Console.WriteLine(node.value);
     }
     public void insert(int value)
@@ -85,11 +97,11 @@ public class BinaryTree
     {
         if (node == null)
             node = root;
-        int value=node.value;
+        int value = node.value;
         if (node.left != null)
             value = min(node.left);
 
-            return value;
+        return value;
     }
     public int Length(Node node = null)
     {
@@ -114,9 +126,9 @@ public class BinaryTree
         if (value < node.value)
         {
             //recebe o valor retornado e o liga ao resto da arvore. 
-            //Quando nao temos nenhuma alteracao, o valor do nó retornado sera o mesmo que 
+            //Quando nao temos nenhuma alteracao, o valor do nï¿½ retornado sera o mesmo que 
             //a celula estava ligada anteriormente.
-            //Entretanto, quando encontrarmos o valor buscado e remove-lo, o no retornado será a subarvore
+            //Entretanto, quando encontrarmos o valor buscado e remove-lo, o no retornado serï¿½ a subarvore
             //a qual pertencia mas, agora, sem o elemento.
             if (node.left == null)
             {
@@ -125,7 +137,8 @@ public class BinaryTree
             }
             node.left = remove(value, node.left);
         }
-        else if (value > node.value){
+        else if (value > node.value)
+        {
             if (node.right == null)
             {
                 Console.WriteLine("valor nao esta presenta na arvore");
@@ -145,17 +158,17 @@ public class BinaryTree
             {
                 return null;
                 //O item nao possui filhos, logo, o lugar que ele ocupava devera ficar vazio
-                //Essa condicao, na verdade, nao é necessaria pois a implementacao dos outros casos
+                //Essa condicao, na verdade, nao ï¿½ necessaria pois a implementacao dos outros casos
                 //ja cobrem sua funcao. Entretanto, para fim ditatico, vou deixala aqui em conjunto com 
                 //essa explicacao
             }
             if (node.right != null && node.left != null)
             {
                 int aux = min(node.right);
-              node.right=remove(aux, node.right);
+                node.right = remove(aux, node.right);
                 node.value = aux;
 
-                
+
             }
             else if (node.right != null)
             {

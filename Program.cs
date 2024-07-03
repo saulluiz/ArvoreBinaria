@@ -1,5 +1,5 @@
 ﻿
-using System.Security.Cryptography;
+
 
 BinaryTree b1 = new BinaryTree();
 b1.insert(4);
@@ -12,15 +12,16 @@ b1.insert(1);
 
 
 
-
-b1.InOrder();
+b1.preOrderTraversal();
+Console.WriteLine("------------------------");
+b1.InOrderTraversal();
 Console.WriteLine("altura " + b1.Length());
 b1.remove(4);
 b1.remove(-7);
 b1.remove(9);
 
     Console.WriteLine("------------------------");
-b1.InOrder();
+b1.InOrderTraversal();
 Console.WriteLine("altura " +b1.Length());
 
 //Console.WriteLine("Menor"+b1.min());
