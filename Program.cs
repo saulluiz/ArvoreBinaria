@@ -1,28 +1,36 @@
-﻿
+﻿AVLTree b1 = new AVLTree();
+string input;
+while (true)
+{
+    System.Console.WriteLine("Digite um numero para inserção,'print' para imprimir a arvore e 'h' para imprimir a altura");
+    input = Console.ReadLine();
+
+    switch (input)
+    {
+        case "print":
+            b1.OrderLevelTraversal();
+            break;
+        case "h" or "H":
+            System.Console.WriteLine(b1.Height());
+            break;
+        default:
+            {
+                try
+                {
+                    b1.insert(int.Parse(input));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                break;
+
+            }
 
 
-BinaryTree b1 = new BinaryTree();
-b1.insert(4);
-b1.insert(2);
-b1.insert(7);
-b1.insert(5);
-b1.insert(9);
-b1.insert(1);
+    }
+}
 
-
-
-
-b1.preOrderTraversal();
-Console.WriteLine("------------------------");
-b1.InOrderTraversal();
-Console.WriteLine("altura " + b1.Length());
-b1.remove(4);
-b1.remove(-7);
-b1.remove(9);
-
-    Console.WriteLine("------------------------");
-b1.InOrderTraversal();
-Console.WriteLine("altura " +b1.Length());
 
 //Console.WriteLine("Menor"+b1.min());
 //b1.InOrder();

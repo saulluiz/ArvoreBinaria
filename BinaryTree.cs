@@ -1,6 +1,6 @@
 public class BinaryTree
 {
-    Node? root;
+    public Node? root;
     public BinaryTree(Node? node = null)
     {
         this.root = node;
@@ -60,7 +60,7 @@ public class BinaryTree
             postOrderTraversal(node.right);
         Console.WriteLine(node.value);
     }
-    public void insert(int value)
+    public  virtual void insert(int value)
     {
         if (root == null)
         {
@@ -72,7 +72,7 @@ public class BinaryTree
         }
     }
 
-    private void insert(int value, Node node)
+    public virtual void insert(int value, Node node)
     {
         if (value < node.value)
         {
@@ -90,6 +90,7 @@ public class BinaryTree
             else
             {
                 insert(value, node.right);
+                
             }
         }
     }
@@ -103,20 +104,20 @@ public class BinaryTree
 
         return value;
     }
-    public int Length(Node node = null)
+    public int Height(Node node = null)
     {
         int heightLeft = 0, heightRight = 0, height = 0;
         if (node == null)
             node = root;
         if (node.left != null)
-            heightLeft = this.Length(node.left);
+            heightLeft = this.Height(node.left);
         if (node.right != null)
-            heightRight = this.Length(node.right);
+            heightRight = this.Height(node.right);
         height += heightLeft > heightRight ? heightLeft : heightRight;
         return height + 1;
 
     }
-    public Node remove(int value, Node node = null)
+    public virtual Node remove(int value, Node node = null)
     {
         if (root == null)
             throw new Exception("Arvore vazia");
@@ -145,6 +146,7 @@ public class BinaryTree
 
                 return node;
             }
+            
             node.right = remove(value, node.right);
         }
         else
