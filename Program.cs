@@ -18,7 +18,7 @@ while (true)
             input = Console.ReadLine();
             try
             {
-                b1.remove(int.Parse(input));
+                b1.Remove(int.Parse(input));
             }
             catch(Exception ex)
             {
@@ -52,7 +52,7 @@ while (true)
             {
                 try
                 {
-                    b1.insert(int.Parse(input));
+                    b1.Insert(int.Parse(input));
                 }
                 catch (Exception ex)
                 {

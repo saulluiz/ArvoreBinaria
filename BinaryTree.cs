@@ -82,19 +82,19 @@ public class BinaryTree
 
     }
 
-    public void postOrderTraversal(Node? node = null)
+    public void PostOrderTraversal(Node? node = null)
     {
         if (node == null)
         {
             node = root;
         }
         if (node.left != null)
-            postOrderTraversal(node.left);
+            PostOrderTraversal(node.left);
         if (node.right != null)
-            postOrderTraversal(node.right);
+            PostOrderTraversal(node.right);
         Console.WriteLine(node.value);
     }
-    public virtual void insert(int value)
+    public virtual void Insert(int value)
     {
         if (root == null)
         {
@@ -102,11 +102,11 @@ public class BinaryTree
         }
         else
         {
-            insert(value, root);
+            Insert(value, root);
         }
     }
 
-    public virtual void insert(int value, Node node)
+    public virtual void Insert(int value, Node node)
     {
         if (value < node.value)
         {
@@ -114,7 +114,7 @@ public class BinaryTree
                 node.left = new Node(value);
             else
             {
-                insert(value, node.left);
+                Insert(value, node.left);
             }
         }
         else
@@ -123,18 +123,18 @@ public class BinaryTree
                 node.right = new Node(value);
             else
             {
-                insert(value, node.right);
+                Insert(value, node.right);
 
             }
         }
     }
-    public int min(Node node = null)
+    public int Min(Node node = null)
     {
         if (node == null)
             node = root;
         int value = node.value;
         if (node.left != null)
-            value = min(node.left);
+            value = Min(node.left);
 
         return value;
     }
@@ -151,7 +151,7 @@ public class BinaryTree
         return height + 1;
 
     }
-    public virtual Node remove(int value, Node node = null)
+    public virtual Node Remove(int value, Node node = null)
     {
         if (root == null)
             throw new Exception("Arvore vazia");
@@ -163,14 +163,14 @@ public class BinaryTree
             //recebe o valor retornado e o liga ao resto da arvore. 
             //Quando nao temos nenhuma alteracao, o valor do n� retornado sera o mesmo que 
             //a celula estava ligada anteriormente.
-            //Entretanto, quando encontrarmos o valor buscado e remove-lo, o no retornado ser� a subarvore
+            //Entretanto, quando encontrarmos o valor buscado e Remove-lo, o no retornado ser� a subarvore
             //a qual pertencia mas, agora, sem o elemento.
             if (node.left == null)
             {
                 Console.WriteLine("valor nao esta presenta na arvore");
                 return node;
             }
-            node.left = remove(value, node.left);
+            node.left = Remove(value, node.left);
         }
         else if (value > node.value)
         {
@@ -181,7 +181,7 @@ public class BinaryTree
                 return node;
             }
 
-            node.right = remove(value, node.right);
+            node.right = Remove(value, node.right);
         }
         else
         {
@@ -200,8 +200,8 @@ public class BinaryTree
             }
             if (node.right != null && node.left != null)
             {
-                int aux = min(node.right);
-                node.right = remove(aux, node.right);
+                int aux = Min(node.right);
+                node.right = Remove(aux, node.right);
                 node.value = aux;
 
 

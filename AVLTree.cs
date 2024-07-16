@@ -6,14 +6,14 @@ public class AVLTree : BinaryTree
         if (GetBalanceFactor(node) > 1)
         {
             if (GetBalanceFactor(node.left) < 0)
-                node.left = rightRotation(node.left);
-            node = leftRotation(node);
+                node.left = RightRotation(node.left);
+            node = LeftRotation(node);
         }
         if (GetBalanceFactor(node) < -1)
         {
             if (GetBalanceFactor(node.right) > 0)
-                node.right = leftRotation(node.right);
-            node = rightRotation(node);
+                node.right = LeftRotation(node.right);
+            node = RightRotation(node);
         }
         return node;
     }
@@ -33,7 +33,7 @@ public class AVLTree : BinaryTree
         }
         return rightHeight - leftHeight;
     }
-    private Node leftRotation(Node node)
+    private Node LeftRotation(Node node)
     {
         Node temp1 = node;
         node = node.right;
@@ -41,7 +41,7 @@ public class AVLTree : BinaryTree
         node.left = temp1;
         return node;
     }
-    private Node rightRotation(Node node)
+    private Node RightRotation(Node node)
     {
         Node temp1 = node;
         node = node.left;
@@ -49,7 +49,7 @@ public class AVLTree : BinaryTree
         node.right = temp1;
         return node;
     }
-    public override void insert(int value)
+    public override void Insert(int value)
     {
         if (root == null)
         {
@@ -57,10 +57,10 @@ public class AVLTree : BinaryTree
         }
         else
         {
-            root = insert(value, root);
+            root = Insert(value, root);
         }
     }
-    public Node insert(int value, Node node)
+    public Node Insert(int value, Node node)
     {
         if (value < node.value)
         {
@@ -68,7 +68,7 @@ public class AVLTree : BinaryTree
                 node.left = new Node(value);
             else
             {
-                node.left = insert(value, node.left);
+                node.left = Insert(value, node.left);
             }
         }
         else
@@ -77,16 +77,14 @@ public class AVLTree : BinaryTree
                 node.right = new Node(value);
             else
             {
-                node.right = insert(value, node.right);
+                node.right = Insert(value, node.right);
             }
         }
         return AVLPropriety(node);
 
 
     }
-
-
-public override Node remove(int value, Node node = null)
+public override Node Remove(int value, Node node = null)
     {
         if (root == null)
             throw new Exception("Arvore vazia");
@@ -99,17 +97,17 @@ public override Node remove(int value, Node node = null)
                 Console.WriteLine("valor nao esta presente na arvore");
                 return node;
             }
-            node.left = remove(value, node.left);
+            node.left = Remove(value, node.left);
         }
         else if (value > node.value)
         {
             if (node.right == null)
             {
-                Console.WriteLine("valor nao esta presenta na arvore");
+                Console.WriteLine("valor nao esta presente na arvore");
 
                 return node;
             }
-            node.right = remove(value, node.right);
+            node.right = Remove(value, node.right);
         }
         else
         {            
@@ -119,8 +117,8 @@ public override Node remove(int value, Node node = null)
             }
             if (node.right != null && node.left != null)
             {
-                int aux = min(node.right);
-                node.right = remove(aux, node.right);
+                int aux = Min(node.right);
+                node.right = Remove(aux, node.right);
                 node.value = aux;
             }
             else if (node.right != null)
