@@ -5,11 +5,21 @@ public class BinaryTree
     {
         this.root = node;
     }
-    public void OrderLevelTraversal(Node? node = null)
+    public void LevelOrderTraversal(Node? node = null)
     {
+        System.Console.WriteLine("Level Order Traversal");
         Node auxNode;
+        if (root == null)
+        {
+            System.Console.WriteLine("Arvore vazia");
+            return;
+        }
+
         if (node == null)
+        {
             node = root;
+        }
+
         Queue<Node> queue = new Queue<Node>();
         queue.Enqueue(node);
         while (queue.Count != 0)
@@ -35,16 +45,40 @@ public class BinaryTree
             InOrderTraversal(node.right);
         }
     }
-    public void preOrderTraversal(Node? node = null)
+    public void PreOrderTraversal(Node? node = null)
     {
         if (node == null)
             node = root;
         Console.WriteLine(node.value);
         if (node.left != null)
-            preOrderTraversal(node.left);
+            PreOrderTraversal(node.left);
         if (node.right != null)
-            preOrderTraversal(node.right);
+            PreOrderTraversal(node.right);
 
+
+    }
+    public Node? SearchNode(int value)
+    {
+        if (root == null)
+        {
+            Console.WriteLine("Arvore Vazia");
+            return null;
+        }
+        return SearchNode(value, root);
+
+
+    }
+    private Node? SearchNode(int value, Node node)
+    {
+        if (node == null)
+        {
+            return null;
+        }
+        else if (value > node.value)
+            return SearchNode(value, node.right);
+        else if (value < node.value)
+            return SearchNode(value, node.left);
+        else return node;
 
     }
 
@@ -60,7 +94,7 @@ public class BinaryTree
             postOrderTraversal(node.right);
         Console.WriteLine(node.value);
     }
-    public  virtual void insert(int value)
+    public virtual void insert(int value)
     {
         if (root == null)
         {
@@ -90,7 +124,7 @@ public class BinaryTree
             else
             {
                 insert(value, node.right);
-                
+
             }
         }
     }
@@ -146,7 +180,7 @@ public class BinaryTree
 
                 return node;
             }
-            
+
             node.right = remove(value, node.right);
         }
         else
