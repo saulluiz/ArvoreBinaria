@@ -128,7 +128,7 @@ public class BinaryTree
             }
         }
     }
-    public int Min(Node node = null)
+    public int Min(Node? node = null)
     {
         if (node == null)
             node = root;
@@ -138,7 +138,7 @@ public class BinaryTree
 
         return value;
     }
-    public int Height(Node node = null)
+    public int Height(Node? node = null)
     {
         int heightLeft = 0, heightRight = 0, height = 0;
         if (node == null)
@@ -151,7 +151,7 @@ public class BinaryTree
         return height + 1;
 
     }
-    public virtual Node Remove(int value, Node node = null)
+    public virtual Node Remove(int value, Node? node = null)
     {
         if (root == null)
             throw new Exception("Arvore vazia");

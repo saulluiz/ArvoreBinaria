@@ -84,7 +84,7 @@ public class AVLTree : BinaryTree
 
 
     }
-public override Node Remove(int value, Node node = null)
+public override Node Remove(int value, Node? node = null)
     {
         if (root == null)
             throw new Exception("Arvore vazia");
